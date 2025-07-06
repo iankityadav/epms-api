@@ -26,7 +26,7 @@ public class EmployeeService {
 
     public List<Employee> getFilteredEmployees(Double score, LocalDate reviewDate, List<String> departments,
             List<String> projects) {
-        Specification<Employee> spec = Specification.where(null);
+        Specification<Employee> spec = (root, query, cb) -> null;
 
         if (score != null && reviewDate != null) {
             spec = spec.and(EmployeeSpecifications.hasPerformanceScore(score, reviewDate));
