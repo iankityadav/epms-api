@@ -49,10 +49,10 @@ class EmployeeApiIntegrationTest {
 
     @BeforeEach
     void setupData() {
-        departmentRepository.deleteAll();
-        projectRepository.deleteAll();
-        employeeRepository.deleteAll();
         reviewRepository.deleteAll();
+        employeeRepository.deleteAll();
+        projectRepository.deleteAll();
+        departmentRepository.deleteAll();
 
         Department dept = new Department();
         dept.setName("HR");
@@ -123,9 +123,9 @@ class EmployeeApiIntegrationTest {
     @Test
     @Order(4)
     void testGetEmployeeDetailsById() throws Exception {
-        mockMvc.perform(get("/api/employees/1"))
+        mockMvc.perform(get("/api/employees/4"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.employee.id").value(1))
+                .andExpect(jsonPath("$.employee.id").value(4))
                 .andExpect(jsonPath("$.department.name").exists())
                 .andExpect(jsonPath("$.projects").isArray())
                 .andExpect(jsonPath("$.last3Reviews").isArray())
