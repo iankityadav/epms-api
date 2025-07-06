@@ -1,5 +1,7 @@
 package com.ankit.epms.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "departments")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
